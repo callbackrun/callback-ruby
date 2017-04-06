@@ -1,3 +1,4 @@
+require "callback/client"
 require "callback/configuration"
 require "callback/version"
 
