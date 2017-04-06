@@ -3,16 +3,18 @@ module Callback
     attr_accessor :access_token, :base_path
 
     def initialize(options={})
-      @access_token = options.fetch(:access_token) do
-        Callback.configuration.access_token
-      end
-      @base_path = options.fetch(:base_path) do
-        Callback.configuration.base_path
-      end
+      @access_token = initialize_attribute :access_token, options
+      @base_path = initialize_attribute :base_path, options
     end
 
     def jobs
       @jobs ||= API::Jobs.new(access_token: access_token, base_path: base_path)
+    end
+
+    private
+
+    def initialize_attribute(key, options)
+      options.fetch(key) { Callback.configuration.send(key) }
     end
   end
 end
