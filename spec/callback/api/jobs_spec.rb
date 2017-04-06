@@ -30,8 +30,10 @@ RSpec.describe Callback::API::Jobs do
   end
 
   describe "#find" do
+    let(:safe_url) { CGI.escape(callback_url).gsub "\.", "%2E" }
+
     it "makes the request" do
-      request = stub_request(:get, "https://api.callback.run/jobs/#{callback_url}")
+      request = stub_request(:get, "https://api.callback.run/jobs/#{safe_url}")
         .and_return(status: 200, body: {}.to_json)
 
       subject.find callback_url
@@ -40,7 +42,7 @@ RSpec.describe Callback::API::Jobs do
     end
 
     it "returns the found job" do
-      stub_callback_request :get, "jobs/#{callback_url}", access_token,
+      stub_callback_request :get, "jobs/#{safe_url}", access_token,
         "job.json", "callback_url" => callback_url, "name" => name
 
       job = subject.find callback_url
