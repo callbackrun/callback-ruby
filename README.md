@@ -35,6 +35,13 @@ Callback.configure do |config|
 end
 ```
 
+The following options are available for configuration:
+
+| Attribute      | Default                    |
+|----------------|----------------------------|
+| `access_token` | `nil`                      |
+| `base_path`    | `https://api.callback.run` |
+
 ### Creating a Client
 
 There are several endpoints that hang off of the client. The first thing you want to do is create a client.

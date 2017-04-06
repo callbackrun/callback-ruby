@@ -1,5 +1,5 @@
 RSpec.describe Callback::Client do
-  describe "#initialize" do
+  describe "#access_token" do
     after { Callback.configuration.access_token = nil }
 
     it "can be initialized with an access token" do
@@ -12,6 +12,23 @@ RSpec.describe Callback::Client do
       end
 
       expect(subject.access_token).to eq "BLAH"
+    end
+  end
+
+  describe "#base_path" do
+    after { Callback.configuration.access_token = nil }
+
+    it "can be initialized with an base path" do
+      expect(described_class.new(base_path: "http://blah.com").base_path).to \
+        eq "http://blah.com"
+    end
+
+    it "uses the base path from configuration if it's not specified" do
+      Callback.configure do |config|
+        config.base_path = "http://blah.com"
+      end
+
+      expect(subject.base_path).to eq "http://blah.com"
     end
   end
 
