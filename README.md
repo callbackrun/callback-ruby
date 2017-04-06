@@ -23,6 +23,14 @@ gem "callback"
 
 ## BASIC USAGE
 
+You can configure Callback to use the API key for your team. If you are using Rails, you will want to create an initializer at `config/initializers/callback.rb`
+
+```ruby
+Callback.configure do |config|
+  config.access_token = ENV["CALLBACK_ACCESS_TOKEN"]
+end
+```
+
 ## CONTRIBUTING
 
 1. Clone the repository `git clone https://github.com/callbackrun/callback-ruby`
