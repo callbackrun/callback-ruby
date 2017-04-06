@@ -28,4 +28,25 @@ RSpec.describe Callback::API::Jobs do
       expect(job.name).to eq name
     end
   end
+
+  describe "#find" do
+    it "makes the request" do
+      request = stub_request(:get, "https://api.callback.run/jobs/#{callback_url}")
+        .and_return(status: 200, body: {}.to_json)
+
+      subject.find callback_url
+
+      expect(request).to have_been_requested
+    end
+
+    it "returns the found job" do
+      stub_callback_request :get, "jobs/#{callback_url}", access_token,
+        "jobs/find_success.json", "callback_url" => callback_url, "name" => name
+
+      job = subject.find callback_url
+
+      expect(job.callback_url).to eq callback_url
+      expect(job.name).to eq name
+    end
+  end
 end
