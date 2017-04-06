@@ -19,7 +19,7 @@ RSpec.describe Callback::API::Jobs do
     end
 
     it "returns the newly created job" do
-      stub_callback_request :post, "jobs", access_token, "jobs/create_success.json",
+      stub_callback_request :post, "jobs", access_token, "job.json",
         "callback_url" => callback_url, "name" => name
 
       job = subject.create callback_url: callback_url, name: name
@@ -41,7 +41,7 @@ RSpec.describe Callback::API::Jobs do
 
     it "returns the found job" do
       stub_callback_request :get, "jobs/#{callback_url}", access_token,
-        "jobs/find_success.json", "callback_url" => callback_url, "name" => name
+        "job.json", "callback_url" => callback_url, "name" => name
 
       job = subject.find callback_url
 
