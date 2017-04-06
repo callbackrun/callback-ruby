@@ -80,6 +80,12 @@ job = client.jobs.find("https://example.com/hooks/users/324/welcome")
 
 Everyone interacting in Callback's codebases, issue trackers, chat rooms, and mailing lists is expected to follow the Callback [code of conduct](CODE_OF_CONDUCT.md).
 
+## RELEASING A NEW GEM
+
+1. Bump the VERSION in `lib/callback/version.rb`
+1. Commit changes and push to GitHub
+1. run `bundle exec rake release`
+
 ## LICENSE
 
 This project is licensed under the [MIT License](LICENSE.md).
