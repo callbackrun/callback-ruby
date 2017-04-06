@@ -63,6 +63,12 @@ job = client.jobs.create(callback_url: "https://example.com/hooks/users/324/welc
                          payload: { account_id: 1234 })
 ```
 
+#### Finding a job
+
+```
+job = client.jobs.find("https://example.com/hooks/users/324/welcome")
+```
+
 ## CONTRIBUTING
 
 1. Clone the repository `git clone https://github.com/callbackrun/callback-ruby`
