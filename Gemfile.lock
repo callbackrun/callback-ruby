@@ -2,11 +2,15 @@ PATH
   remote: .
   specs:
     callback-ruby (0.0.1)
+      httparty
 
 GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.3)
+    httparty (0.14.0)
+      multi_xml (>= 0.5.2)
+    multi_xml (0.6.0)
     rake (12.0.0)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
