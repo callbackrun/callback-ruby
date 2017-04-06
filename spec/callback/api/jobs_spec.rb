@@ -10,14 +10,24 @@ RSpec.describe Callback::API::Jobs do
   subject { described_class.new access_token: access_token, base_path: base_path }
 
   describe "#create" do
-    it "creates a new job and returns the specified job" do
+    it "makes the request" do
+      request = stub_request(:post, "https://api.callback.run/jobs")
+        .with(body: hash_including(:callback_url, :name))
+        .and_return(status: 201, body: {}.to_json)
+
+      subject.create callback_url: callback_url, name: name
+
+      expect(request).to have_been_requested
+    end
+
+    it "returns the newly created job" do
       stub_callback_request :post, "jobs", access_token, "jobs/create_success.json",
         "callback_url" => callback_url, "name" => name
 
       job = subject.create callback_url: callback_url, name: name
 
-      expect(job["callback_url"]).to eq callback_url
-      expect(job["name"]).to eq name
+      expect(job[:callback_url]).to eq callback_url
+      expect(job[:name]).to eq name
     end
   end
 end

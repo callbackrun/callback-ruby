@@ -20,11 +20,17 @@ module Callback
             "Accept"        => "application/json",
             "Authorization" => "Bearer #{access_token}",
             "Content-Type"  => "application/json; charset=utf-8"
-          }
+          },
+          format: :json
         }
+        if method.to_sym == :post
+          options[:body] = parameters.to_json
+        else
+          options[:query] = parameters
+        end
 
         response = HTTParty.send method, full_path, options
-        JSON.parse(response.body)
+        JSON.parse(response.body, symbolize_names: true)
       end
     end
   end
