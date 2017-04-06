@@ -1,6 +1,8 @@
 Callback.run Ruby API Wrapper
 =============================
 
+[ ![Codeship Status for callbackrun/callback-ruby](https://app.codeship.com/projects/2c3b5c50-fd0e-0134-c7bc-22bf4c6edae4/status?branch=master)](https://app.codeship.com/projects/211937)
+
 Ruby bindings for the Callback.run API (http://developers.callback.run)
 
 ## DESCRIPTION
