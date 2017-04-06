@@ -1,8 +1,6 @@
 module Callback
   module API
-    class Jobs
-      def initialize(access_token: nil)
-      end
+    class Jobs < Base
     end
   end
 end
