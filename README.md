@@ -50,7 +50,7 @@ There are several endpoints that hang off of the client. The first thing you wan
 client = Callback::Client.new(access_token: "my_token")
 ```
 
-If you leave the `access_token` option blank, it will use the access token specified when [configuring the client](#configuring-the-client).
+If you leave the `access_token` option blank, it will use the access token specified when [configuring the client](#configure-the-client).
 
 ### Jobs
 
