@@ -7,5 +7,9 @@ module Callback
         Callback.configuration.access_token
       end
     end
+
+    def jobs
+      @jobs ||= API::Jobs.new(access_token: access_token)
+    end
   end
 end

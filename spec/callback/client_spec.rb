@@ -2,10 +2,6 @@ RSpec.describe Callback::Client do
   describe "#initialize" do
     after { Callback.configuration.access_token = nil }
 
-    it "initializes with an options array" do
-      expect { described_class.new }.to_not raise_error
-    end
-
     it "can be initialized with an access token" do
       expect(described_class.new(access_token: "BLAH").access_token).to eq "BLAH"
     end
@@ -15,7 +11,13 @@ RSpec.describe Callback::Client do
         config.access_token = "BLAH"
       end
 
-      expect(described_class.new.access_token).to eq "BLAH"
+      expect(subject.access_token).to eq "BLAH"
+    end
+  end
+
+  describe "#jobs" do
+    it "returns the jobs api" do
+      expect(subject.jobs).to be_instance_of Callback::API::Jobs
     end
   end
 end
