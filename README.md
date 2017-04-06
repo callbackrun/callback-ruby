@@ -25,12 +25,42 @@ gem "callback"
 
 ## BASIC USAGE
 
+### Configure the Client
+
 You can configure Callback to use the API key for your team. If you are using Rails, you will want to create an initializer at `config/initializers/callback.rb`
 
 ```ruby
 Callback.configure do |config|
   config.access_token = ENV["CALLBACK_ACCESS_TOKEN"]
 end
+```
+
+The following options are available for configuration:
+
+| Attribute      | Default                    |
+|----------------|----------------------------|
+| `access_token` | `nil`                      |
+| `base_path`    | `https://api.callback.run` |
+
+### Creating a Client
+
+There are several endpoints that hang off of the client. The first thing you want to do is create a client.
+
+```
+client = Callback::Client.new(access_token: "my_token")
+```
+
+If you leave the `access_token` option blank, it will use the access token specified when [configuring the client](#configuring-the-client).
+
+### Jobs
+
+If you want to perform any CRUD operations on a job, you can use the `jobs` method off of the `Client`.
+
+#### Creating a job
+
+```
+job = client.jobs.create(callback_url: "https://example.com/hooks/users/324/welcome",
+                         payload: { account_id: 1234 })
 ```
 
 ## CONTRIBUTING

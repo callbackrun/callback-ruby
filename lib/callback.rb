@@ -1,4 +1,7 @@
+require "callback/api"
+require "callback/client"
 require "callback/configuration"
+require "callback/parser"
 require "callback/version"
 
 module Callback
