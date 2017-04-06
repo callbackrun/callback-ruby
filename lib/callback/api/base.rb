@@ -1,8 +1,11 @@
 require "httparty"
+require "callback/parser"
 
 module Callback
   module API
     class Base
+      include Parser
+
       attr_accessor :access_token, :base_path
 
       def initialize(access_token: nil, base_path: nil)

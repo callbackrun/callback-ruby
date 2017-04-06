@@ -26,8 +26,8 @@ RSpec.describe Callback::API::Jobs do
 
       job = subject.create callback_url: callback_url, name: name
 
-      expect(job[:callback_url]).to eq callback_url
-      expect(job[:name]).to eq name
+      expect(job.callback_url).to eq callback_url
+      expect(job.name).to eq name
     end
   end
 end
