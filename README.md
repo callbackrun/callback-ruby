@@ -39,3 +39,9 @@ end
 1. Commit your changes (small commits please)
 1. Push your new branch `git push origin my-awesome-feature`
 1. Create a pull request `hub pull-request -b callbackrun:master -h callbackrun:my-awesome-feature`
+
+Everyone interacting in Callback's codebases, issue trackers, chat rooms, and mailing lists is expected to follow the Callback [code of conduct](CODE_OF_CONDUCT.md).
+
+## LICENSE
+
+This project is licensed under the [MIT License](LICENSE.md).
