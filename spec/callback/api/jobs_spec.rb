@@ -1,8 +1,6 @@
 require "api_spec_helper"
 
 RSpec.describe Callback::API::Jobs do
-  include CallbackStubbingFactory
-
   let(:access_token) { "TOKEN" }
   let(:base_path) { "https://api.callback.run" }
   let(:callback_url) { "http://example.com/hooks/users/324/welcome" }
