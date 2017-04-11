@@ -14,13 +14,13 @@ This is a Ruby wrapper around the Callback.run API to easily integrate Callback 
 ## INSTALLATION
 
 ```
-gem install callback
+gem install callback-ruby
 ```
 
 Using [Bunder](http://bundler.io/), add the following to your `Gemfile`:
 
 ```
-gem "callback"
+gem "callback-ruby"
 ```
 
 ## BASIC USAGE
@@ -30,6 +30,8 @@ gem "callback"
 You can configure Callback to use the API key for your team. If you are using Rails, you will want to create an initializer at `config/initializers/callback.rb`
 
 ```ruby
+require "callback"
+
 Callback.configure do |config|
   config.access_token = ENV["CALLBACK_ACCESS_TOKEN"]
 end
